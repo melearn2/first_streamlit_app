@@ -21,10 +21,6 @@ streamlit.header("Fruityvice Fruit Advice!")
 fruit_choice = streamlit.text_input('What fruit would you like information about?','Apple')
 streamlit.write('The user entered ', fruit_choice)
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
-fruit_choice2 = streamlit.text_input('What fruit would you like information about?','Cherry')
-streamlit.write('The user entered ', fruit_choice2)
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice2)
 # get response in variable to write in tabular format
 #streamlit.text(fruityvice_response.json())
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
@@ -38,3 +34,12 @@ my_data_row = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_row)
 
+#2nd option for fruit choice
+fruit_choice = streamlit.text_input('What fruit would you like information about?','Cherry')
+streamlit.write('The user entered ', fruit_choice)
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+# get response in variable to write in tabular format
+#streamlit.text(fruityvice_response.json())
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# write response in tabular format
+streamlit.dataframe(fruityvice_normalized)
