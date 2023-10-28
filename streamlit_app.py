@@ -1,5 +1,6 @@
 import streamlit
 import pandas
+import requests
 streamlit.title("My Mom's New Healthy Diner")
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣 Oatmeal with warm milk')
@@ -16,12 +17,11 @@ streamlit.dataframe(fruits_to_show)
 
 #new section to display FruitVicy API response
 streamlit.header("Fruityvice Fruit Advice!")
-fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
-streamlit.write('The user entered ', fruit_choice)
-import requests
-fruitvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+#fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+#streamlit.write('The user entered ', fruit_choice)
+#fruitvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
 # write your own comment -what does the next line do? 
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+#fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # write your own comment - what does this do?
-streamlit.dataframe(fruityvice_normalized)
+#streamlit.dataframe(fruityvice_normalized)
 
