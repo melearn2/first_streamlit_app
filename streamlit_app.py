@@ -34,15 +34,23 @@ try:
     streamlit.dataframe(frm_function)
 except URLError as e:
   streamlit.error()
+   
+#show fruit list from snowflake table
+
+streamlit.header("The fruit load list contains:")
+def get_fruit_load_list():
+   with my_cnx.cursor() as my_cur
+   my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
+   return my_cur.fetchall()
+    
+#add button to load fruit
+if streamlit.button('Get fruit list'):
+   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+   my_data_rows = get_fruit_load_list()
+streamlit.dataframe(my_data_rows)
+
 #stop running below steps till we troubleshoot
 streamlit.stop()
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
-my_data_row = my_cur.fetchall()
-streamlit.header("The fruit load list contains:")
-streamlit.dataframe(my_data_row)
-
 #2nd option for fruit choice
 fruit_choice2 = streamlit.text_input('What fruit would you like information about?','Cherry')
 streamlit.write('The user entered ', fruit_choice2)
