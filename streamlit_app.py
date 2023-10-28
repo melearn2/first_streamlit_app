@@ -44,5 +44,5 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # write response in tabular format
 streamlit.dataframe(fruityvice_normalized)
 
-streamlit.write('Thanks for adding ', fruit_choice & fruit_choice2)
+streamlit.write('Thanks for adding ', fruit_choice , fruit_choice2)
 my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('from streamlit')")
