@@ -62,14 +62,3 @@ if streamlit.button('Add a fruit to the list'):
     streamlit.text(function_return)
 
 
-#stop running below steps till we troubleshoot
-streamlit.stop()
-#2nd option for fruit choice
-fruit_choice2 = 
-streamlit.write('The user entered ', fruit_choice2)
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice2)
-# get response in variable to write in tabular format
-#streamlit.text(fruityvice_response.json())
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# write response in tabular format
-streamlit.dataframe(fruityvice_normalized)
